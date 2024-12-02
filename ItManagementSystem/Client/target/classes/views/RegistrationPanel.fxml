@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<Pane fx:id="overlay" layoutX="0" layoutY="0" prefHeight="700" prefWidth="1200" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.RegistrationPanelController">
+    <children>
+      <Pane fx:id="overlay1" prefHeight="700" prefWidth="739.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false" />
+      <AnchorPane fx:id="sidePanel" layoutX="738.0" prefHeight="700.0" prefWidth="461.0" style="-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1 0 0 0;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="145.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-padding: 10;" styleClass="mainLabel" stylesheets="@../css/AuthStyles.css" text="Registration Form" textAlignment="CENTER" />
+            <Label layoutX="14.0" layoutY="61.0" styleClass="miniLabel" text="Login" />
+            <Label layoutX="15.0" layoutY="131.0" styleClass="miniLabel" text="Password" />
+            <Label layoutX="16.0" layoutY="200.0" styleClass="miniLabel" text="First Name" />
+            <Label layoutX="17.0" layoutY="273.0" styleClass="miniLabel" text="Last Name" />
+            <TextField fx:id="login" layoutX="15.0" layoutY="82.0" prefHeight="37.0" prefWidth="380.0" promptText="Login" styleClass="text-field" />
+            <TextField fx:id="lastName" layoutX="15.0" layoutY="294.0" prefHeight="37.0" prefWidth="380.0" promptText="Your Last Name" styleClass="text-field" />
+            <TextField fx:id="firstName" layoutX="15.0" layoutY="225.0" prefHeight="37.0" prefWidth="380.0" promptText="Your First Name" styleClass="text-field" />
+            <PasswordField fx:id="password" layoutX="15.0" layoutY="152.0" prefHeight="37.0" prefWidth="380.0" promptText="Password" styleClass="text-field" />
+            <TextField fx:id="email" layoutX="15.0" layoutY="361.0" prefHeight="37.0" prefWidth="380.0" promptText="e.g. myFavEmail@gmail.com" styleClass="text-field" />
+            <Label layoutX="17.0" layoutY="340.0" styleClass="miniLabel" text="E-mail" />
+            <Label layoutX="16.0" layoutY="409.0" styleClass="miniLabel" text="Age" />
+            <TextField fx:id="age" layoutX="14.0" layoutY="430.0" prefHeight="37.0" prefWidth="380.0" promptText="e.g. 18" styleClass="text-field" />
+            <Label layoutX="17.0" layoutY="475.0" styleClass="miniLabel" text="Country" />
+            <TextField fx:id="country" layoutX="15.0" layoutY="496.0" prefHeight="37.0" prefWidth="380.0" promptText="e.g. Poland" styleClass="text-field" />
+            <Label layoutX="19.0" layoutY="541.0" styleClass="miniLabel" text="City" />
+            <TextField fx:id="city" layoutX="17.0" layoutY="562.0" prefHeight="37.0" prefWidth="380.0" promptText="e.g. Krakow" styleClass="text-field" />
+            <Button fx:id="confirmButton" layoutX="157.0" layoutY="640.0" mnemonicParsing="false" text="Confirm" />
+            <ImageView fx:id="out1" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="90.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out2" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="160.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out3" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="233.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out4" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="302.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out5" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="369.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out6" fitHeight="21.0" fitWidth="23.0" layoutX="397.0" layoutY="438.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out7" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="504.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="out8" fitHeight="21.0" fitWidth="26.0" layoutX="397.0" layoutY="570.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tick.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+    </children>
+</Pane>

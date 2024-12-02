@@ -1,0 +1,70 @@
+
+@font-face {
+    font-family: "Montserrat-SemiBold";
+    src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: "Poppins-Light";
+    src: url('../fonts/poppins/Poppins-light.ttf');
+}
+@font-face {
+    font-family: "Poppins-Black";
+    src: url('../fonts/poppins/Poppins-Black.ttf');
+}
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url('../fonts/montserrat/Montserrat-Light.ttf');
+}
+
+
+.label{
+    -fx-font-family: "Poppins";
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+}
+.mainLabel{
+    -fx-font-family: "Poppins";
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+}
+.miniLabel{
+    -fx-font-size: 15px;
+}
+
+.background {
+    -fx-background-color: linear-gradient(to right bottom, #61D8DE, #E839F6);
+}
+.loginCard{
+    -fx-background-radius: 50px;
+    -fx-border-radius: 10px;
+    -fx-background-color: White;
+}
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+.button{
+    -fx-background-color: #00FF00;
+    -fx-pref-width:190px;
+    -fx-pref-height:40px;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 10px;
+    -fx-font-family: Poppins Black;
+    -fx-text-fill:White;
+}
+#text{
+    -fx-font-family: "Montserrat Light";
+    -fx-font-size: 15px;
+}
+#link{
+    -fx-font-family: "Montserrat Light";
+    -fx-font-size: 15px;
+}

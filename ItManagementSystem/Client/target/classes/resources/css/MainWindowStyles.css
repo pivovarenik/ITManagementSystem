@@ -1,0 +1,68 @@
+.sidepanel{
+    -fx-background-color: white;
+}
+.label{
+    -fx-text-fill: black;
+    -fx-font-family: "Century Gothic";
+}
+.profile_pic{
+    -fx-padding: 10px;
+}
+.shadow{
+    -fx-text-fill: #808080;
+    -fx-font-family: "Century Gothic";
+}
+.hbox-item:hover {
+    -fx-background-color: #E0E0E0;
+    -fx-border-color: #B0BEC5;
+}
+.hbox-item.selected {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: white;
+}
+.topappbar{
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 10;
+    -fx-text-fill: #808080;
+}
+.hbox-table-header {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: white;
+    -fx-border-color: #2a4887;
+    -fx-border-width: 0 0 2px 0;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.projectWhite {
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+}
+.projectBlack{
+    -fx-background-color: #AFEEEE ;
+    -fx-font-weight: bold;
+}
+.button {
+    -fx-background-color: #4CAF50; /* Зеленый цвет фона */
+    -fx-text-fill: white; /* Белый цвет текста */
+    -fx-font-size: 14px; /* Размер шрифта */
+    -fx-font-weight: bold; /* Жирный шрифт */
+    -fx-padding: 10 20; /* Отступы внутри кнопки */
+    -fx-border-radius: 25; /* Закругленные углы */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0.5, 0, 2); /* Тень */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Более темный цвет при наведении */
+}
+
+.button:pressed {
+    -fx-background-color: #388e3c; /* Еще более темный цвет при нажатии */
+}
+.projectItem label {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0.5, 0, 2);
+}
+.scroll-pane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

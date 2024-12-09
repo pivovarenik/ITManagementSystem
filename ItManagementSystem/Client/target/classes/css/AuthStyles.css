@@ -22,13 +22,6 @@
 
 
 .label{
-    -fx-font-family: "Poppins";
-    -fx-font-size: 30px;
-    -fx-alignment: center;
-}
-.mainLabel{
-    -fx-font-family: "Poppins";
-    -fx-font-size: 30px;
     -fx-alignment: center;
 }
 .miniLabel{
@@ -42,6 +35,10 @@
     -fx-background-radius: 50px;
     -fx-border-radius: 10px;
     -fx-background-color: White;
+}
+.pic{
+    -fx-background-radius: 50px;
+    -fx-border-radius: 10px;
 }
 .text-field {
     -fx-background-color: -fx-text-box-border, -fx-background ;
@@ -57,14 +54,5 @@
     -fx-pref-height:40px;
     -fx-background-radius: 50px;
     -fx-border-radius: 10px;
-    -fx-font-family: Poppins Black;
     -fx-text-fill:White;
-}
-#text{
-    -fx-font-family: "Montserrat Light";
-    -fx-font-size: 15px;
-}
-#link{
-    -fx-font-family: "Montserrat Light";
-    -fx-font-size: 15px;
 }

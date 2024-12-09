@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.ProjectController" fx:id="projectItem" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+    <children>
+        <VBox alignment="CENTER" fx:id="nameBox" fillWidth="false" prefHeight="100.0" prefWidth="391.0">
+            <children>
+                <Label  fx:id="nameLabel" alignment="TOP_RIGHT" contentDisplay="CENTER" text="hjvghvvghvhgvghvhgvghvhvjhgvhgvhgv" />
+            </children>
+        </VBox>
+        <VBox alignment="CENTER"  fx:id="startDateBox" prefHeight="100.0" prefWidth="225.0">
+            <children>
+                <Label fx:id="startDateLabel" alignment="TOP_RIGHT" contentDisplay="CENTER" text="Label" />
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" fx:id="deadlineBox" prefHeight="100.0" prefWidth="164.0">
+            <children>
+                <Label alignment="TOP_RIGHT" fx:id="deadlineLabel" contentDisplay="CENTER" text="Label" />
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" fx:id="statusBox" prefHeight="100.0" prefWidth="206.0">
+            <children>
+                <Label alignment="TOP_RIGHT"  fx:id="statusLabel" contentDisplay="CENTER" text="Label" />
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" fx:id="progressBox"  prefHeight="100.0" prefWidth="315.0">
+            <children>
+                <ProgressBar fx:id="progressBar"  prefWidth="200.0" progress="0.0" />
+            </children>
+        </VBox>
+    </children>
+</HBox>

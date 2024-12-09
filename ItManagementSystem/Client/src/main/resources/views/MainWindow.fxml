@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<Pane fx:id="mainPane" prefHeight="600.0" prefWidth="1500.0" stylesheets="@../css/MainWindowStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.MainWindowController">
+   <children>
+           <VBox fx:id="menu" alignment="TOP_CENTER" fillWidth="false" layoutY="147.0" prefHeight="453.0" prefWidth="150.0" style=": ;" styleClass="sidepanel" stylesheets="@../css/MainWindowStyles.css">
+              <children>
+            <HBox fx:id="main" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                        <Label styleClass="shadow" text="Главная">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="projects" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                  <Label styleClass="shadow" text="Проекты">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="staff" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                  <Label styleClass="shadow" text="Сотрудники">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="chat" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                  <Label styleClass="shadow" text="Чат">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="departments" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                  <Label styleClass="shadow" text="Департаменты">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="attendance" alignment="CENTER" prefHeight="54.0" prefWidth="155.0" styleClass="hbox-item">
+               <children>
+                  <Label styleClass="shadow" text="Посещаемость">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+              </children>
+
+           </VBox>
+           <HBox alignment="CENTER_LEFT" layoutY="-3.0" prefHeight="153.0" prefWidth="149.0" spacing="10">
+         <children>
+            <ImageView fx:id="logo" fitHeight="169.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+           </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="153.0" prefHeight="65.0" prefWidth="1349.0" spacing="10" style="-fx-padding: 10;" styleClass="topappbar">
+         <children>
+            <Label fx:id="currentLabel" prefHeight="27.0" prefWidth="1134.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Система управления персоналом" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-item">
+               <children>
+                        <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" styleClass="profile_pic" HBox.hgrow="ALWAYS">
+                        <image>
+                           <Image url="@../images/baseIcon.png" />
+                        </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="имя" />
+                        <Label contentDisplay="TOP" styleClass="shadow" text="Работа" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</Pane>

@@ -1,5 +1,6 @@
 package org.controllers;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -7,13 +8,18 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.Client;
+import org.models.User;
+import org.requests.LoginRequest;
 
 import java.io.IOException;
 
@@ -31,11 +37,14 @@ public class AuthorizationLayoutController {
     private AnchorPane root;
     @FXML
     private Label regLink;
+    @FXML
+    private Label wLabel;
 
 
     private Pane overlay;
     private Pane overlay1;
     private AnchorPane sidePanel;
+
     private void loadRegistrationPanel() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RegistrationPanel.fxml"));
@@ -109,6 +118,27 @@ public class AuthorizationLayoutController {
                             new KeyValue(logButton.styleProperty(), "-fx-background-color: #0056b3;-fx-effect:none;"))
             );
             timeline.play();
+            String response = LoginRequest.send(new User(loginField.getText(),passField.getText()));
+            if(response==null){
+                wLabel.setText("Произошла ошибка!");
+            }
+            else if(!response.equals("Успешная авторизация!")){
+                wLabel.setText(response);
+            }
+            else {
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow.fxml"));
+                    Pane pane = loader.load();
+                    Scene scene = new Scene(pane);
+                    Stage stage =(Stage) logButton.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.centerOnScreen();
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+
         });
         regLink.setOnMouseEntered(event -> {
             Timeline hoverAnimation = new Timeline(

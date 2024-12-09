@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1200.0" styleClass="background" stylesheets="@../css/AuthStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.AuthorizationLayoutController">
+    <children>
+        <AnchorPane fx:id="mainCard" layoutX="116.0" layoutY="61.0" prefHeight="567.0" prefWidth="954.0" styleClass="loginCard">
+            <children>
+                <ImageView fx:id="img" fitHeight="236.0" fitWidth="265.0" layoutX="129.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/StartImage.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="label" layoutX="564.0" layoutY="117.0" prefHeight="44.0" prefWidth="234.0" styleClass="label" stylesheets="@../css/AuthStyles.css" text="Авторизация" textAlignment="CENTER">
+                    <font>
+                        <Font name="Century Gothic Bold" size="32.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor></Label>
+                <HBox alignment="CENTER_LEFT" layoutX="518.0" layoutY="193.0" prefHeight="72.0" prefWidth="351.0" spacing="5">
+                    <children>
+                        <ImageView fx:id="icon" fitHeight="37.0" fitWidth="38.0" layoutX="5.0" opacity="0.55">
+                            <image>
+                                <Image url="@../images/loginIcon.png" />
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="loginField" prefHeight="37.0" prefWidth="286.0" promptText="Login" styleClass="text-field">
+                            <HBox.margin>
+                                <Insets left="5" right="10" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" layoutX="518.0" layoutY="286.0" prefHeight="72.0" prefWidth="351.0" spacing="5">
+                    <children>
+                        <ImageView fx:id="icon1" fitHeight="37.0" fitWidth="38.0" layoutX="5.0" opacity="0.55">
+                            <image>
+                                <Image url="@../images/lock.png" />
+                            </image>
+                        </ImageView>
+                        <PasswordField fx:id="passField" prefHeight="37.0" prefWidth="286.0" promptText="Password" styleClass="text-field" />
+                    </children>
+                </HBox>
+                <Button fx:id="logButton" layoutX="592.0" layoutY="414.0" mnemonicParsing="false" text="Войти">
+               <font>
+                  <Font name="Century Gothic Bold" size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Label id="text" layoutX="594.0" layoutY="502.0" prefHeight="27.0" prefWidth="205.0" text="У вас ещё нет аккаунта?">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font></Label>
+                <Label id="link" fx:id="regLink" layoutX="616.0" layoutY="529.0" text="Создать аккаунт →">
+               <font>
+                  <Font name="Century Gothic" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Label>
+            <Label fx:id="wLabel" layoutX="610.0" layoutY="369.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            </children></AnchorPane>
+    </children>
+</AnchorPane>

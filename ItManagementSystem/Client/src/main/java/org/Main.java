@@ -3,16 +3,16 @@ package org;
 import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.models.Person;
+import org.models.Role;
+import org.models.User;
 
 public class Main extends Application {
 
@@ -28,9 +28,9 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/views/AuthorizationLayout.fxml"));
-            Pane l = (Pane) loader.load();
-            Scene scene = new Scene(l);
+            loader.setLocation(getClass().getResource("/views/AuthorizationLayoutMain.fxml"));
+            AnchorPane pane = loader.load();
+            Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
         }

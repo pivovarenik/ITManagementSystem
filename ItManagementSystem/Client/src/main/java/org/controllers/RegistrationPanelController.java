@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.Client;
+import org.models.User;
 import org.util.ValidateRegistrationInput;
 
 import java.util.ArrayList;
@@ -80,9 +82,9 @@ public class RegistrationPanelController {
                             new KeyValue(confirmButton.styleProperty(), "-fx-background-color: #0056b3;-fx-effect:none;"))
             );
             timeline.play();
+            boolean ok = true;
             ValidateRegistrationInput validator = new ValidateRegistrationInput();
-            ArrayList<Boolean> inputs =  validator.validateInputs(login.getText(), password.getText(),firstName.getText(),lastName.getText(),email.getText(),age.getText(),country.getText(),city.getText());
-
+            ArrayList<Boolean> inputs = validator.validateInputs(login.getText(), password.getText(),firstName.getText(),lastName.getText(),email.getText(),age.getText(),country.getText(),city.getText());
             int i = 0;
             List<ImageView> imageViews = List.of(out1, out2, out3, out4, out5, out6, out7, out8);
             for (ImageView imageView : imageViews) {
@@ -91,7 +93,21 @@ public class RegistrationPanelController {
                 }
                 else imageView.setImage(new Image("/images/tick.png"));
                 imageView.setOpacity(1);
+                if(!inputs.get(i)) {
+                    ok = false;
+                }
                 i++;
+
+            }
+            if(ok) {
+                User user = new User(login.getText(),
+                        password.getText(),
+                        firstName.getText() + " " + lastName.getText(),
+                        email.getText(),
+                        Integer.parseInt(age.getText()),
+                        country.getText(),
+                        city.getText());
+                Client.send();
             }
         });
     }

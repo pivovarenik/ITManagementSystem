@@ -31,6 +31,7 @@ public class ConfirmRegistrationController {
     public AnchorPane mainCard;
     @FXML
     public Label phoneLabel;
+
     private boolean isShifted = false;
     private Stage previousStage;
     @FXML

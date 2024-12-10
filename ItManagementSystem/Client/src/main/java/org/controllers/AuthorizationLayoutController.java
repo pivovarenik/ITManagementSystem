@@ -1,6 +1,5 @@
 package org.controllers;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -14,10 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.Client;
 import org.models.User;
 import org.requests.LoginRequest;
 

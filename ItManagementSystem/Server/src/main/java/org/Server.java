@@ -5,6 +5,8 @@ import dao.UserDAO;
 import entities.User;
 import service.LoginService;
 import service.ProjectService;
+import service.RoleService;
+import service.UserService;
 import util.Command;
 
 import java.io.*;
@@ -40,9 +42,29 @@ public class Server implements Runnable {
                    LoginService lgs = new LoginService();
                    lgs.login(reader,writer);
                    break;
-                case PROJECTS:
+                case ALL_PROJECTS:
                     ProjectService prs = new ProjectService();
                     prs.getAllProjects(reader,writer);
+                    break;
+                case ALL_USERS:
+                    UserService us = new UserService();
+                    us.getAllUsers(reader,writer);
+                    break;
+                case USER_BY_NAME:
+                    us = new UserService();
+                    us.getUserByName(reader,writer);
+                    break;
+                case ROLE_BY_ID:
+                    RoleService rls= new RoleService();
+                    rls.getRoleById(reader,writer);
+                    break;
+                case MERGE_USER:
+                    us= new UserService();
+                    us.mergeUser(reader,writer);
+                    break;
+                case DELETE_USER:
+                    us= new UserService();
+                    us.deleteUser(reader,writer);
                     break;
                 default :
                     System.out.println("Invalid command");

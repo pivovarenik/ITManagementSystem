@@ -1,9 +1,17 @@
 package org;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import dao.UserDAO;
+import dto.UserDTO;
+import entities.User;
+import service.UserService;
 import util.HibernatePreloader;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {

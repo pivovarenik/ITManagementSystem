@@ -42,6 +42,7 @@ public class MainWindowController {
     private VBox projectVBox;
     private ScrollPane contentPane;
     private Pane centerPane;
+    private Node currentPane = null;
 
     @FXML
     private void initialize() {
@@ -54,7 +55,6 @@ public class MainWindowController {
                 hbox.getStyleClass().add("selected");
             });
         }
-        menu.setViewOrder(-1);
         projects.setOnMouseClicked(event -> {
             for (HBox item : hboxItems) {
                 item.getStyleClass().remove("selected");
@@ -63,11 +63,15 @@ public class MainWindowController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Projects.fxml"));
                 Node pane = loader.load();
+                if (currentPane != null) {
+                    mainPane.getChildren().remove(currentPane);
+                }
                 currentLabel.setText("Проекты");
                 centerPane = (Pane) pane.lookup("#mainPane");
                 contentPane = (ScrollPane) pane.lookup("#contentPane");
                 projectVBox = (VBox) pane.lookup("#projectsContainer");
                 mainPane.getChildren().add(pane);
+                currentPane = pane;
             }
             catch (IOException e){
                 e.printStackTrace();
@@ -80,6 +84,13 @@ public class MainWindowController {
             staff.getStyleClass().add("selected");
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Staff.fxml"));
+                Node pane = loader.load();
+                currentLabel.setText("Сотрудники");
+                if (currentPane != null) {
+                    mainPane.getChildren().remove(currentPane);
+                }
+                mainPane.getChildren().add(pane);
+                currentPane = pane;
             } catch (Exception e) {
                 e.printStackTrace();
             }

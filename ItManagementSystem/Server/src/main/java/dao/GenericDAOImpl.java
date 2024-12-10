@@ -39,6 +39,7 @@ public abstract class GenericDAOImpl<T,ID> implements GenericDAO<T,ID> {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.merge(entity);
+            System.out.println("User: " + entity.toString());
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();

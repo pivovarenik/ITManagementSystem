@@ -2,7 +2,7 @@ package org.models;
 
 
 public class User {
-
+    private int id;
     private String username;
     private String password;
     private String fullName;
@@ -12,8 +12,49 @@ public class User {
     private String city;
     private String profile_picture;
     private String phone;
+    private boolean confirmed;
+    private int role_id;
 
-    public User(String username,String password){
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User(int id, String username, String password, String fullName, String email, int age, String country, String city, String profile_picture, String phone, boolean confirmed, int role_id) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.email = email;
+        this.age = age;
+        this.country = country;
+        this.city = city;
+        this.profile_picture = profile_picture;
+        this.phone = phone;
+        this.confirmed = confirmed;
+        this.role_id = role_id;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
+    }
+
+    public User(String username, String password){
         this.username = username;
         this.password = password;
     }
@@ -39,6 +80,20 @@ public class User {
         this.city = city;
         this.profile_picture = "";
         this.phone = "";
+    }
+
+    public User(String username, String fullName, String password, int age, String email, String country, String city, String profile_picture, String phone, boolean confirmed, int role_id) {
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+        this.age = age;
+        this.email = email;
+        this.country = country;
+        this.city = city;
+        this.profile_picture = profile_picture;
+        this.phone = phone;
+        this.confirmed = confirmed;
+        this.role_id = role_id;
     }
 
     public User(String username, String password, String email, String fullName, int age, String country, String city, String profile_picture, String phone) {
@@ -128,7 +183,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
@@ -137,7 +193,8 @@ public class User {
                 ", city='" + city + '\'' +
                 ", profile_picture='" + profile_picture + '\'' +
                 ", phone='" + phone + '\'' +
+                ", confirmed=" + confirmed +
+                ", role_id=" + role_id +
                 '}';
     }
-
 }

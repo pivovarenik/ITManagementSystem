@@ -66,3 +66,7 @@
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
+.avatarName {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

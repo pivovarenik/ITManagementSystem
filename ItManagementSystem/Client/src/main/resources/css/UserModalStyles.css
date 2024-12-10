@@ -1,0 +1,67 @@
+.cardUser{
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #FAEBD7;
+    -fx-font-family: "Century Gothic";
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+#fullname{
+    -fx-font-weight: Bold;
+    -fx-font-size: 20px;
+}
+#msgIcon{
+    -fx-image: url("../images/message.png");
+}
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 14px; /* Размер шрифта */
+    -fx-text-fill: black; /* Цвет текста */
+    -fx-padding: 0; /* Убирает внутренние отступы */
+}
+#MainName{
+    -fx-font-size: 18px;
+}
+#msgIcon:hover{
+    -fx-image: url("../images/message1.png");
+}
+#deleteIcon{
+    -fx-image: url("../images/delete.png");
+}
+#deleteIcon:hover{
+    -fx-image: url("../images/delete1.png");
+}
+#editIcon{
+    -fx-image: url("../images/edit-pen-icon.png");
+}
+#editIcon:hover{
+    -fx-image: url("../images/edit-pen-icon1.png");
+}
+.icon-button {
+    -fx-cursor: hand;
+    -fx-background-color: #ffffff;
+    -fx-padding: 5;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 5, 0, 0, 2);
+    -fx-alignment: center;
+}
+
+
+.icon-button:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #aaaaaa;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 5, 0, 0, 3);
+}
+
+.icon-button:pressed {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #888888;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 4, 0, 0, 1);
+}
+
+.stats{
+    -fx-font-size: 16px;
+}

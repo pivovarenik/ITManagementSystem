@@ -17,7 +17,7 @@ public class ProjectRequest {
     public static List<Project> send() {
         String host = "localhost";
         int port = 8080;
-        String message = "projects";
+        String message = "all_projects";
         try (Socket socket = new Socket(host, port);
              OutputStream output = socket.getOutputStream();
              InputStream input = socket.getInputStream();

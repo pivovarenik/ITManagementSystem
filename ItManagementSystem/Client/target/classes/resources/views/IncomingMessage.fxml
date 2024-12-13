@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<Pane layoutX="0" layoutY="0" prefWidth="573.0" style="-fx-background-radius: 10; -fx-padding: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.IncomingMessageController">
+    <children>
+        <VBox alignment="BOTTOM_LEFT" layoutX="7.0" minHeight="50" nodeOrientation="RIGHT_TO_LEFT" prefWidth="411.0" spacing="5.0" style="-fx-background-radius: 10; -fx-background-color: DimGray; -fx-padding: 10;">
+            <children>
+                <Label fx:id="content" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="500.0" style="-fx-text-fill: white; -fx-font-size: 14;" text="" textAlignment="RIGHT" wrapText="true" />
+                <Label fx:id="time" alignment="BOTTOM_RIGHT" style="-fx-text-fill: #d3d3d3; -fx-font-size: 10;" text="12:45 PM">
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </children>
+</Pane>

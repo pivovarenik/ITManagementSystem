@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<Pane fx:id="mainPane" layoutX="153.0" layoutY="61.0" prefHeight="539.0" prefWidth="1349.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.ProjectsController">
+<Pane fx:id="mainPane" layoutX="153.0" layoutY="120.0" prefHeight="539.0" prefWidth="1349.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.ProjectsController">
     <children>
-        <ScrollPane fx:id="contentPane" fitToHeight="true" fitToWidth="true" layoutX="14.0" layoutY="100.0" prefHeight="284.0" prefWidth="1321.0">
+        <ScrollPane fx:id="contentPane" fitToHeight="true" fitToWidth="true" layoutY="42.0" prefHeight="284.0" prefWidth="1321.0">
             <content>
                 <VBox fx:id="projectsContainer" alignment="TOP_CENTER" spacing="10">
                     <children>
@@ -18,7 +18,7 @@
                 </VBox>
             </content>
         </ScrollPane>
-        <HBox alignment="CENTER" layoutX="14.0" layoutY="60.0" prefHeight="42.0" prefWidth="1321.0" spacing="10" styleClass="hbox-table-header" stylesheets="@../css/MainWindowStyles.css">
+        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="1321.0" spacing="10" styleClass="hbox-table-header" stylesheets="@../css/MainWindowStyles.css">
             <children>
                 <VBox alignment="CENTER" fillWidth="false" prefHeight="100.0" prefWidth="391.0">
                     <children>
@@ -47,6 +47,6 @@
                 </VBox>
             </children>
         </HBox>
-      <Button layoutX="642.0" layoutY="14.0" mnemonicParsing="false" text="+ Добавить проект" />
+      <Button layoutX="584.0" layoutY="351.0" mnemonicParsing="false" text="+ Добавить проект" />
     </children>
 </Pane>

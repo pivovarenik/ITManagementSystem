@@ -11,11 +11,7 @@
 
 <Pane fx:id="editUserCard" layoutX="550.0" layoutY="200.0" maxHeight="300.0" maxWidth="443.0" prefHeight="300.0" prefWidth="443.0" styleClass="cardUser" stylesheets="@../css/UserModalStyles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.NewUserInfoEditModalController">
     <children>
-        <Circle fx:id="userPhoto" centerX="100.0" centerY="50.0" fill="gray" layoutX="122.0" layoutY="-108.0" radius="65.0" stroke="lightgray" strokeWidth="2.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Circle>
-        <HBox alignment="CENTER" layoutY="-3.0" prefHeight="86.0" prefWidth="443.0">
+        <HBox alignment="CENTER" layoutY="78.0" prefHeight="86.0" prefWidth="443.0">
             <children>
                 <ImageView fx:id="saveIcon" fitHeight="30.0" fitWidth="26.0" onMouseReleased="#handleSave" pickOnBounds="true" preserveRatio="true" styleClass="icon-button">
                     <HBox.margin>
@@ -28,10 +24,10 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <VBox alignment="CENTER" prefHeight="86.0" prefWidth="176.0">
+                <VBox alignment="CENTER" prefHeight="86.0" prefWidth="227.0">
                     <children>
                   <TextField fx:id="MainName" alignment="CENTER" promptText="Фамилия, имя " />
-                        <TextField fx:id="roleField" alignment="CENTER" promptText="Введите роль" />
+                  <ComboBox fx:id="roleField" prefHeight="33.0" prefWidth="236.0" promptText="Выберите роль" styleClass="cardUser" />
                     </children>
                 </VBox>
                 <ImageView fx:id="cancelIcon" fitHeight="42.0" fitWidth="27.0" onMouseReleased="#goBack" pickOnBounds="true" preserveRatio="true" styleClass="icon-button">
@@ -47,35 +43,5 @@
                 </ImageView>
             </children>
         </HBox>
-        <VBox alignment="TOP_CENTER" layoutY="86.0" prefHeight="214.0" prefWidth="227.0">
-            <children>
-                <TextField fx:id="usernameField" alignment="CENTER" promptText="Введите имя пользователя">
-                    <VBox.margin>
-                        <Insets bottom="40.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="emailField" alignment="CENTER" promptText="Введите email">
-                    <VBox.margin>
-                        <Insets bottom="30.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="ageField" alignment="CENTER" promptText="Введите возраст" />
-            </children>
-        </VBox>
-        <VBox alignment="TOP_CENTER" layoutX="216.0" layoutY="86.0" prefHeight="214.0" prefWidth="233.0">
-            <children>
-                <TextField fx:id="countryField" alignment="CENTER" promptText="Введите страну">
-                    <VBox.margin>
-                        <Insets bottom="40.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="cityField" alignment="CENTER" promptText="Введите город">
-                    <VBox.margin>
-                        <Insets bottom="30.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="phoneField" alignment="CENTER" promptText="Введите телефон" />
-            </children>
-        </VBox>
     </children>
 </Pane>

@@ -13,7 +13,7 @@ public class AvatarFactory {
             FXMLLoader loader = new FXMLLoader(AvatarFactory.class.getResource("/views/Avatar.fxml"));
             Node avatarNode = loader.load();
             AvatarController controller = loader.getController();
-            controller.setAvatar(user.getFullName(), user.getProfile_picture());
+            controller.setAvatar(user.getFullName(), user.getprofilePictureUrl());
             return avatarNode;
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,6 +26,19 @@ public class AvatarFactory {
             Node avatarNode = loader.load();
             AvatarController controller = loader.getController();
             controller.setAvatar("Добавить пользователя", "/images/add_user.png");
+            return avatarNode;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static Node createBasicAvatar(User user){
+        try {
+            FXMLLoader loader = new FXMLLoader(AvatarFactory.class.getResource("/views/Avatar.fxml"));
+            Node avatarNode = loader.load();
+            AvatarController controller = loader.getController();
+            controller.setAvatar(user.getFullName(), user.getprofilePictureUrl());
+            controller.disable();
             return avatarNode;
         } catch (IOException e) {
             e.printStackTrace();

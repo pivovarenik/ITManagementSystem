@@ -5,15 +5,25 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.models.User;
+import org.requests.UserRequest;
+import org.util.RootFinder;
+import org.util.UserSession;
 import org.util.ValidateRegistrationInput;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,16 +109,59 @@ public class RegistrationPanelController {
 
             }
             if(ok) {
-                User user = new User(login.getText(),
+            User user = new User(login.getText(),
                         password.getText(),
-                        firstName.getText() + " " + lastName.getText(),
+                        lastName.getText()+ " " +firstName.getText(),
                         email.getText(),
                         Integer.parseInt(age.getText()),
                         country.getText(),
                         city.getText());
-                ///TODO///Client.send();
+            user.setConfirmed(true);
+            System.out.println(user);
+            User userfromback = UserRequest.findUserByName(lastName.getText()+ " " +firstName.getText());
+            if(userfromback != null) {
+                if(userfromback.isConfirmed()){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Информация");
+                    alert.setHeaderText("Вы уже зарегистрированы");
+                    alert.setContentText("Авторизуйтесь");
+
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image("/images/logo.png"));
+
+                    alert.showAndWait();
+                }
+                else {
+                    try {
+                        user.setRole(userfromback.getRole());
+                        user.setId(userfromback.getId());
+                        UserSession.setCurrentUser(user);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ConfirmRegistration.fxml"));
+                        Pane pane = (Pane) loader.load();
+                        Scene scene = new Scene(pane);
+                        Stage stage = (Stage) lastName.getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.centerOnScreen();
+                        stage.setTitle("It Management System");
+                        stage.getIcons().add(new Image("/images/Main.png"));
+                        stage.setResizable(false);
+                    } catch (IOException e) {
+                        System.out.println("ошибка загрузки файла в RegistrationPanelController");
+                    }
+                }
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Информация");
+                alert.setHeaderText("Пользователь не найден");
+                alert.setContentText("Пользователь с именем "+user.getFullName()+ "  не существует в системе.");
+
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/images/logo.png"));
+
+                alert.showAndWait();
+            }
             }
         });
     }
-
 }

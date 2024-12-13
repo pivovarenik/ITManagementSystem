@@ -1,3 +1,7 @@
-INSERT INTO users (username, password, full_name, email, role_id, age, country, city, phone, confirmed)
+/*INSERT INTO chats (user_one_id, user_two_id)
+VALUES (1, 43), (1, 44), (1, 45);*/
+INSERT INTO messages (chat_id, sender_id, message)
 VALUES
-    ('john_doe', 'password123', 'John Doe', 'john.doe@example.com', 2, 28, 'USA', 'New York', '+11234567890', FALSE);
+    (10, 1, 'Привет, как дела?'),
+    (11, 1, 'Все хорошо, спасибо!'),
+    (12, 1, 'Какие планы на завтра?');

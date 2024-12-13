@@ -28,7 +28,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/views/MainWindow.fxml"));
+            loader.setLocation(getClass().getResource("/views/AuthorizationLayoutMain.fxml"));
             Pane pane = loader.load();
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);

@@ -3,7 +3,6 @@ package util;
 public enum Command {
     ADD_USER,
     LOGIN,
-    REGISTER,
     ALL_PROJECTS,
     ALL_USERS,
     USER_BY_NAME,
@@ -11,4 +10,13 @@ public enum Command {
     SAVE_USER,
     MERGE_USER,
     DELETE_USER,
+    ALL_ROLES,
+    REG_USER,
+    FIND_USER_BY_USERNAME,
+    ALL_CHATS_OF_USER,
+    GET_CHAT_MESSAGES,
+    ADD_NEW_MSG,
+    ALL_BUT_USERS,
+    NEW_CHAT,
+    DELETE_CHAT,
 }

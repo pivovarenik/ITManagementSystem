@@ -1,6 +1,8 @@
 package org.models;
 
 
+import java.util.Objects;
+
 public class User {
     private int id;
     private String username;
@@ -10,10 +12,10 @@ public class User {
     private int age;
     private String country;
     private String city;
-    private String profile_picture;
+    private String profilePictureUrl;
     private String phone;
     private boolean confirmed;
-    private int role_id;
+    private Role role;
 
     public int getId() {
         return id;
@@ -23,7 +25,19 @@ public class User {
         this.id = id;
     }
 
-    public User(int id, String username, String password, String fullName, String email, int age, String country, String city, String profile_picture, String phone, boolean confirmed, int role_id) {
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && age == user.age && confirmed == user.confirmed && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(fullName, user.fullName) && Objects.equals(email, user.email) && Objects.equals(country, user.country) && Objects.equals(city, user.city) && Objects.equals(profilePictureUrl, user.profilePictureUrl) && Objects.equals(phone, user.phone) && Objects.equals(role, user.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, fullName, email, age, country, city, profilePictureUrl, phone, confirmed, role);
+    }
+
+    public User(int id, String username, String password, String fullName, String email, int age, String country, String city, String profilePictureUrl, String phone, boolean confirmed, Role role_id) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -32,10 +46,10 @@ public class User {
         this.age = age;
         this.country = country;
         this.city = city;
-        this.profile_picture = profile_picture;
+        this.profilePictureUrl = profilePictureUrl;
         this.phone = phone;
         this.confirmed = confirmed;
-        this.role_id = role_id;
+        this.role = role_id;
     }
 
     public boolean isConfirmed() {
@@ -46,12 +60,12 @@ public class User {
         this.confirmed = confirmed;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRole(Role role_id) {
+        this.role = role_id;
     }
 
     public User(String username, String password){
@@ -66,7 +80,7 @@ public class User {
         age = 0;
         country = "";
         city = "";
-        profile_picture = "";
+        profilePictureUrl = "";
         phone = "+375333333333";
     }
 
@@ -78,11 +92,11 @@ public class User {
         this.age = age;
         this.country = country;
         this.city = city;
-        this.profile_picture = "";
+        this.profilePictureUrl = "";
         this.phone = "";
     }
 
-    public User(String username, String fullName, String password, int age, String email, String country, String city, String profile_picture, String phone, boolean confirmed, int role_id) {
+    public User(String username, String fullName, String password, int age, String email, String country, String city, String profilePictureUrl, String phone, boolean confirmed, Role role_id) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;
@@ -90,13 +104,13 @@ public class User {
         this.email = email;
         this.country = country;
         this.city = city;
-        this.profile_picture = profile_picture;
+        this.profilePictureUrl = profilePictureUrl;
         this.phone = phone;
         this.confirmed = confirmed;
-        this.role_id = role_id;
+        this.role = role_id;
     }
 
-    public User(String username, String password, String email, String fullName, int age, String country, String city, String profile_picture, String phone) {
+    public User(String username, String password, String email, String fullName, int age, String country, String city, String profilePictureUrl, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -104,7 +118,7 @@ public class User {
         this.age = age;
         this.country = country;
         this.city = city;
-        this.profile_picture = profile_picture;
+        this.profilePictureUrl = profilePictureUrl;
         this.phone = phone;
     }
 
@@ -164,12 +178,12 @@ public class User {
         this.city = city;
     }
 
-    public String getProfile_picture() {
-        return profile_picture;
+    public String getprofilePictureUrl() {
+        return profilePictureUrl;
     }
 
-    public void setProfile_picture(String profile_picture) {
-        this.profile_picture = profile_picture;
+    public void setprofilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
     }
 
     public String getPhone() {
@@ -191,10 +205,10 @@ public class User {
                 ", age=" + age +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
-                ", profile_picture='" + profile_picture + '\'' +
+                ", profilePictureUrl='" + profilePictureUrl + '\'' +
                 ", phone='" + phone + '\'' +
                 ", confirmed=" + confirmed +
-                ", role_id=" + role_id +
+                ", role=" + role +
                 '}';
     }
 }

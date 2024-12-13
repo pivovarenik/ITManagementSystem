@@ -11,6 +11,7 @@ import org.requests.UserRequest;
 import org.ui.AvatarFactory;
 import org.ui.CleanScreen;
 import org.ui.ProjectBoxFactory;
+import org.util.UserSession;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class StaffController {
     private void initialize() {
         List<User> users = UserRequest.findAll();
         System.out.println(users);
+        User user1 = UserSession.getCurrentUser();
         try {
             if (users != null && !users.isEmpty()) {
                 for (User user : users) {
@@ -29,11 +31,18 @@ public class StaffController {
                         staffContainer.getChildren().add(avatar);
                     }
                 }
-                Node avatar = AvatarFactory.createEmptyAvatar();
-                staffContainer.getChildren().add(avatar);
+                if(user1.getRole().getId()== 1){
+                    Node avatar = AvatarFactory.createEmptyAvatar();
+                    staffContainer.getChildren().add(avatar);
+                }
             } else {
-                Node avatar = AvatarFactory.createEmptyAvatar();
-                staffContainer.getChildren().add(avatar);
+                if(user1.getRole().getId()== 1){
+                    Node avatar = AvatarFactory.createEmptyAvatar();
+                    staffContainer.getChildren().add(avatar);
+                }
+                else {
+                    staffContainer.getChildren().clear();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

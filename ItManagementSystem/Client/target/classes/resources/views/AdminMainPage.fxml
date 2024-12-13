@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox alignment="TOP_CENTER" layoutX="147.0" layoutY="109.0" prefHeight="491.0" prefWidth="1349.0" spacing="20" style="-fx-background-color: #F9F9F9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.AdminMainPageController">
+    <children>
+        <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Панель администратора">
+            <font>
+                <Font name="Century Gothic Bold" size="15.0" />
+            </font></Label>
+        <Label text="Статистика за последний месяц" />
+        <HBox alignment="CENTER" spacing="20">
+            <children>
+                <VBox alignment="CENTER" prefHeight="85.0" prefWidth="222.0" spacing="10" style="-fx-background-color: #E3F2FD; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <children>
+                        <Label style="-fx-font-size: 16;" text="Количество работников" />
+                        <Label fx:id="employeeCount" style="-fx-font-size: 20; -fx-font-weight: bold;" text="0" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="85.0" prefWidth="230.0" spacing="10" style="-fx-background-color: #C8E6C9; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <children>
+                        <Label style="-fx-font-size: 16;" text="Количество проектов" />
+                        <Label fx:id="projectCount" style="-fx-font-size: 20; -fx-font-weight: bold;" text="0" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="85.0" prefWidth="224.0" spacing="10" style="-fx-background-color: #FFCCBC; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <children>
+                        <Label style="-fx-font-size: 16;" text="Количество должностей" />
+                        <Label fx:id="positionCount" style="-fx-font-size: 20; -fx-font-weight: bold;" text="0" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="85.0" prefWidth="250.0" spacing="10" style="-fx-background-color: #FFECB3; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <children>
+                        <Label style="-fx-font-size: 16;" text="Количество решенных задач" />
+                        <Label fx:id="resolvedTasksCount" style="-fx-font-size: 20; -fx-font-weight: bold;" text="0" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets top="20.0" />
+    </padding>
+</VBox>

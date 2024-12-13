@@ -13,11 +13,11 @@ public class Message {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "chat_id", nullable = false)
     private Chat chat;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "sender_id", nullable = false)
     private User sender;
 
@@ -81,4 +81,15 @@ public class Message {
         this.isRead = isRead;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", chat=" + chat +
+                ", sender=" + sender +
+                ", message='" + message + '\'' +
+                ", sentAt=" + sentAt +
+                ", isRead=" + isRead +
+                '}';
+    }
 }

@@ -28,14 +28,14 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <VBox alignment="CENTER" prefHeight="86.0" prefWidth="176.0">
+                <VBox alignment="CENTER" prefHeight="86.0" prefWidth="270.0">
                     <children>
-                  <Label id="fullname" fx:id="fullNameId" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="241.0" text="Fullname">
+                  <Label id="fullname" fx:id="fullNameId" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="272.0" text="Fullname">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                        <TextField fx:id="roleField" alignment="CENTER" promptText="Введите роль" />
+                  <ComboBox fx:id="roleField" prefHeight="33.0" prefWidth="233.0" promptText="Выберите роль" styleClass="cardUser" />
                     </children>
                 </VBox>
                 <ImageView fx:id="cancelIcon" fitHeight="42.0" fitWidth="27.0" onMouseReleased="#goBack" pickOnBounds="true" preserveRatio="true" styleClass="icon-button">
@@ -53,32 +53,70 @@
         </HBox>
         <VBox alignment="TOP_CENTER" layoutY="86.0" prefHeight="214.0" prefWidth="227.0">
             <children>
-                <TextField fx:id="usernameField" alignment="CENTER" promptText="Введите имя пользователя">
-                    <VBox.margin>
-                        <Insets bottom="40.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="emailField" alignment="CENTER" promptText="Введите email">
-                    <VBox.margin>
-                        <Insets bottom="30.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="ageField" alignment="CENTER" promptText="Введите возраст" />
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Username:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="usernameField" alignment="CENTER" promptText="Введите имя пользователя" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Почта:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="emailField" alignment="CENTER" promptText="Введите email" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Возраст:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="ageField" alignment="CENTER" promptText="Введите возраст" />
+               </children>
+            </VBox>
             </children>
         </VBox>
         <VBox alignment="TOP_CENTER" layoutX="216.0" layoutY="86.0" prefHeight="214.0" prefWidth="233.0">
             <children>
-                <TextField fx:id="countryField" alignment="CENTER" promptText="Введите страну">
-                    <VBox.margin>
-                        <Insets bottom="40.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="cityField" alignment="CENTER" promptText="Введите город">
-                    <VBox.margin>
-                        <Insets bottom="30.0" />
-                    </VBox.margin>
-                </TextField>
-                <TextField fx:id="phoneField" alignment="CENTER" promptText="Введите телефон" />
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Страна:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="countryField" alignment="CENTER" promptText="Введите страну" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Город:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="cityField" alignment="CENTER" promptText="Введите город" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="227.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Телефон:" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="phoneField" alignment="CENTER" promptText="Введите телефон" />
+               </children>
+            </VBox>
             </children>
         </VBox>
     </children>

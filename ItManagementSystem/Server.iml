@@ -12,10 +12,19 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="db:hibernate.cfg.xml" />
+          <unit-entry name="db:hibernate.cfg.xml" value="bd7e44a5-289e-4e50-be4a-099a3503d480" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/Server/src/main/resources/db/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="Server" value="d17ce1db-5903-4198-a277-f8b7ddbce616" />
+        </datasource-mapping>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>

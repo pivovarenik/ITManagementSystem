@@ -56,14 +56,6 @@ CREATE TABLE tasks (
 );
 
 
-CREATE TABLE project_users (
-                               project_id INT NOT NULL,
-                               user_id INT NOT NULL,
-                               FOREIGN KEY (project_id) REFERENCES projects(id),
-                               FOREIGN KEY (user_id) REFERENCES users(id),
-                               PRIMARY KEY (project_id, user_id)
-);
-
 CREATE TABLE task_users (
                             task_id INT NOT NULL,
                             user_id INT NOT NULL,

@@ -26,5 +26,23 @@ public class LoginRequest {
         }
         return null;
     }
+    public static User find(String username) {
+        String host = "localhost";
+        int port = 8080;
+        String message = "find_user_by_username";
+        try (Socket socket = new Socket(host, port);
+             OutputStream output = socket.getOutputStream();
+             InputStream input = socket.getInputStream();
+             PrintWriter writer = new PrintWriter(output, true);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+            Gson gson = new Gson();
+            writer.println(message);
+            writer.println(username);
+            return (gson.fromJson(reader, User.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 

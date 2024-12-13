@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
 
-<Pane fx:id="mainPane" layoutX="153.0" layoutY="61.0" prefHeight="539.0" prefWidth="1349.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.StaffController">
+<Pane fx:id="mainPane" layoutX="153.0" layoutY="110.0" prefHeight="539.0" prefWidth="1349.0" style="-fx-border-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.StaffController">
     <children>
         <ScrollPane fitToWidth="true" prefHeight="539.0" prefWidth="1349.0">
             <content>

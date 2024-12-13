@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<Pane fx:id="pane" prefHeight="79.0" prefWidth="235.0" styleClass="pane" stylesheets="@../css/Chat.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controllers.ChatWindowController">
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin>
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="12.0" layoutY="-2.0" prefHeight="79.0" prefWidth="225.0">
+         <children>
+            <Circle fx:id="profile_pic" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+            <VBox fx:id="textarea" alignment="CENTER" prefHeight="79.0" prefWidth="168.0">
+               <children>
+                  <Label fx:id="name" contentDisplay="CENTER" prefHeight="31.0" prefWidth="169.0" text="Label" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="job" contentDisplay="CENTER" opacity="0.73" prefHeight="31.0" prefWidth="169.0" style="-fx-text-fill: white;" stylesheets="@../css/Chat.css" text="Label" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin></Label>
+               </children>
+            </VBox>
+            <Circle fill="DODGERBLUE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</Pane>

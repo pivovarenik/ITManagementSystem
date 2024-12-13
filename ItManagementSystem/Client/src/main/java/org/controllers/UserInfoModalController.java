@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -21,8 +22,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import org.models.Role;
 import org.models.User;
+import org.requests.RoleRequest;
 import org.requests.UserRequest;
 import org.util.AgeParser;
+import org.util.RootFinder;
+import org.util.UserSession;
 
 import java.io.IOException;
 
@@ -53,37 +57,55 @@ public class UserInfoModalController {
     public Label phone;
     @FXML
     public ImageView deleteIcon;
+    @FXML
+    public Label errorMsg;
 
     private User user;
-    private Role curRole;
     private String pathToProfilePic = "";
     public User getUser() {
         return user;
     }
-    public void setUserData(User user, Role role) {
-        this.user = user;
-        this.curRole = role;
+    public void setUserData(User uuser) {
+        this.user = uuser;
         fullNameId.setText(user.getFullName());
         email.setText(user.getEmail());
-        this.role.setText(role.getRoleName());
+        this.role.setText(user.getRole().getRoleName());
         username.setText(user.getUsername());
         age.setText(String.valueOf(user.getAge()));
         country.setText(user.getCountry());
+        if(country.getText().equals("")){
+            deactivate();
+        }
         city.setText(user.getCity());
         phone.setText(user.getPhone());
         Image image;
-        if (user.getProfile_picture() != null && !user.getProfile_picture().isEmpty()) {
-            image = new Image(user.getProfile_picture());
-            pathToProfilePic = user.getProfile_picture();
+        if (user.getprofilePictureUrl() != null && !user.getprofilePictureUrl().isEmpty()) {
+            image = new Image(user.getprofilePictureUrl());
+            pathToProfilePic = user.getprofilePictureUrl();
         } else {
             image = new Image("/images/baseIcon.png");
             pathToProfilePic = "/images/baseIcon.png";
         }
         Image croppedImage = cropToSquare(image);
         userPhoto.setFill(new ImagePattern(croppedImage));
-        if( user.getRole_id() == 1){
+
+        User curUser = UserSession.getCurrentUser();
+        if( user.getRole().getId() == 1 && curUser.getRole().getId() != 1 ){
+            removeEditingIcons();
+        }
+        if(curUser.getRole().getId()!=1 && !user.getFullName().equals(curUser.getFullName())){
+            removeEditingIcons();
+        }
+        if(curUser.getFullName().equals(user.getFullName())){
+            removeMsgIcon();
+        }
+        if(curUser.getRole().getId()!=1){
             deleteIcon.setVisible(false);
-            deleteIcon.setDisable(true);
+            deleteIcon.setOpacity(0);
+        }
+        if(user.getRole().getId()==1){
+            deleteIcon.setVisible(false);
+            deleteIcon.setOpacity(0);
         }
     }
     private Image cropToSquare(Image image) {
@@ -118,11 +140,11 @@ public class UserInfoModalController {
 
                 UserInfoEditModalController editController = loader.getController();
 
-                editController.setUserData(this.user, this.curRole);
-                Node rootPane = findRoot(city);
+                editController.setUserData(this.user);
+                Node rootPane = RootFinder.findRoot(city);
                 Pane root = (Pane) rootPane;
                 editController.setOnSaveCallback(updatedUser -> {
-                    setUserData(updatedUser, curRole);
+                    setUserData(updatedUser);
                     root.getChildren().removeLast();
                 });
 
@@ -140,13 +162,6 @@ public class UserInfoModalController {
             }
         });
     }
-    private Parent findRoot(Node currentNode) {
-        Parent parent = currentNode.getParent();
-        while (parent != null && parent.getParent() != null) {
-            parent = parent.getParent();
-        }
-        return parent;
-    }
     public void handleSave() {
         user.setFullName(fullNameId.getText().isEmpty() ? user.getFullName() : fullNameId.getText());
         user.setEmail(email.getText().isEmpty() ? user.getEmail() : email.getText());
@@ -154,7 +169,8 @@ public class UserInfoModalController {
         user.setCountry(country.getText().isEmpty() ? user.getCountry() : country.getText());
         user.setCity(city.getText().isEmpty() ? user.getCity() : city.getText());
         user.setPhone(phone.getText().isEmpty() ? user.getPhone() : phone.getText());
-        user.setProfile_picture(pathToProfilePic);
+        System.out.println(pathToProfilePic);
+        user.setprofilePictureUrl(pathToProfilePic);
         user.setUsername(username.getText().isEmpty() ? user.getUsername() : username.getText());
         System.out.println(UserRequest.save(user));
     }
@@ -178,7 +194,7 @@ public class UserInfoModalController {
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Staff.fxml"));
                     Pane pane = (Pane) loader.load();
-                    Node mainNode = findRoot(city);
+                    Node mainNode = RootFinder.findRoot(city);
                     Pane root = (Pane) mainNode;
                     root.getChildren().removeLast();
                     root.getChildren().add(pane);
@@ -193,36 +209,24 @@ public class UserInfoModalController {
         handleSave();
         UserRequest.delete(user);
     }
-
-    public void createNewUser() {
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NewUserInfoEditModal.fxml"));
-            Pane pane = (Pane) loader.load();
-            Node rootNode = findRoot(city);
-            Pane root = (Pane) rootNode;
-            StackPane modalLayer = new StackPane();
-            modalLayer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
-            modalLayer.setPrefSize(root.getWidth(), root.getHeight());
-            modalLayer.setAlignment(Pos.CENTER);
-            modalLayer.getChildren().add(pane);
-          /*  modalLayer.setOnMouseClicked(event -> {
-                if (event.getTarget() == modalLayer) {
-                    root.getChildren().remove(modalLayer);
-                    controller.handleSave();
-                    fullNameLabel.setText(controller.getUser().getFullName());
-                    Image img = new Image(controller.getUser().getProfile_picture());
-                    Image newimage = cropToSquare(img);
-                    profilePic.setFill(new ImagePattern(newimage));
-                }
-            });*/
-            root.getChildren().add(modalLayer);
-
-            root.getChildren().add(pane);
-        }
-        catch(IOException e){
-            System.out.println("ошибка при создании перчика");
-            e.printStackTrace();
-        }
+    private void deactivate() {
+        errorMsg.setOpacity(1);
+        errorMsg.setDisable(false);
+        editIcon.setDisable(true);
+        msgIcon.setDisable(true);
+        errorMsg.setStyle("-fx-font-size: 20px; -fx-text-fill: red; -fx-font-weight: bold;");
+        errorMsg.setLayoutX(40);
+        errorMsg.setAlignment(Pos.CENTER);
+    }
+    public void removeMsgIcon(){
+        msgIcon.setOpacity(0);
+        msgIcon.setDisable(true);
+    }
+    public void removeEditingIcons(){
+        editIcon.setOpacity(0);
+        editIcon.setDisable(true);
+        deleteIcon.setOpacity(0);
+        deleteIcon.setDisable(true);
     }
 }
 

@@ -11,12 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.models.User;
 import org.requests.LoginRequest;
+import org.requests.UserRequest;
+import org.util.UserSession;
 
 import java.io.IOException;
 
@@ -123,6 +126,9 @@ public class AuthorizationLayoutController {
                 wLabel.setText(response);
             }
             else {
+                User curUser = LoginRequest.find(loginField.getText());
+                System.out.println(curUser);
+                UserSession.setCurrentUser(curUser);
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainWindow.fxml"));
                     Pane pane = loader.load();
@@ -130,6 +136,9 @@ public class AuthorizationLayoutController {
                     Stage stage =(Stage) logButton.getScene().getWindow();
                     stage.setScene(scene);
                     stage.centerOnScreen();
+                    stage.setTitle("It Management System");
+                    stage.getIcons().add(new Image("/images/Main.png"));
+                    stage.setResizable(false);
                 }
                 catch (IOException e){
                     e.printStackTrace();

@@ -3,10 +3,7 @@ package org;
 import com.google.gson.Gson;
 import dao.UserDAO;
 import entities.User;
-import service.LoginService;
-import service.ProjectService;
-import service.RoleService;
-import service.UserService;
+import service.*;
 import util.Command;
 
 import java.io.*;
@@ -32,22 +29,23 @@ public class Server implements Runnable {
             Command command = Command.valueOf(message.toUpperCase());
             switch (command) {
                 case ADD_USER :
-                    UserDAO userDAO = new UserDAO();
-                    message = reader.readLine();
-                    Gson gson = new Gson();
-                    User user = gson.fromJson(message, User.class);
-                    userDAO.save(user);
+                    UserService us = new UserService();
+                    us.addUser(reader,writer);
+                    break;
+                case REG_USER:
+                    us = new UserService();
+                    us.register(reader,writer);
                     break;
                 case LOGIN:
-                   LoginService lgs = new LoginService();
-                   lgs.login(reader,writer);
-                   break;
+                    LoginService lgs = new LoginService();
+                    lgs.login(reader,writer);
+                    break;
                 case ALL_PROJECTS:
                     ProjectService prs = new ProjectService();
                     prs.getAllProjects(reader,writer);
                     break;
                 case ALL_USERS:
-                    UserService us = new UserService();
+                    us = new UserService();
                     us.getAllUsers(reader,writer);
                     break;
                 case USER_BY_NAME:
@@ -65,6 +63,38 @@ public class Server implements Runnable {
                 case DELETE_USER:
                     us= new UserService();
                     us.deleteUser(reader,writer);
+                    break;
+                case ALL_ROLES:
+                    rls= new RoleService();
+                    rls.getAllRoles(reader,writer);
+                    break;
+                case FIND_USER_BY_USERNAME:
+                    lgs= new LoginService();
+                    lgs.findByUsername(reader,writer);
+                    break;
+                case ALL_CHATS_OF_USER:
+                    ChatService chs = new ChatService();
+                    chs.getChatsByUserId(reader,writer);
+                    break;
+                case GET_CHAT_MESSAGES:
+                    MessageService ms = new MessageService();
+                    ms.getChatMessages(reader,writer);
+                    break;
+                case ADD_NEW_MSG:
+                    ms = new MessageService();
+                    ms.addMsg(reader,writer);
+                    break;
+                case ALL_BUT_USERS:
+                    us= new UserService();
+                    us.allButUsers(reader,writer);
+                    break;
+                case NEW_CHAT:
+                    chs= new ChatService();
+                    chs.createChat(reader,writer);
+                    break;
+                case DELETE_CHAT:
+                    chs= new ChatService();
+                    chs.deleteChat(reader,writer);
                     break;
                 default :
                     System.out.println("Invalid command");

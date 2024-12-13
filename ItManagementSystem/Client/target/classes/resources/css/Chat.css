@@ -1,0 +1,57 @@
+.pane{
+    -fx-background-color: #2C2F33;
+}
+.label{
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: Bold;
+    -fx-padding: 0,0,0,40px;
+    -fx-text-fill: white;
+}
+.pane:hover {
+    -fx-background-color: black;
+}
+#name{
+    -fx-font-size: 18px;
+}
+#job{
+    -fx-font-size: 15px;
+    -fx-opacity: 0.6;
+}
+.pane.selected {
+    -fx-background-color: #6495ED;
+}
+#textarea{
+    -fx-padding: 0,0,0,40px;
+}
+#sendIcon{
+    -fx-image: url("../images/send.png");
+}
+#sendIcon:hover{
+    -fx-image: url("../images/send1.png");
+}
+.button{
+    -fx-background-color: REd;
+    -fx-pref-width:190px;
+    -fx-pref-height:40px;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 10px;
+    -fx-text-fill:White;
+}
+#deleteBut{
+    -fx-background-color: REd;
+}
+#addBut{
+    -fx-background-color: green;
+}
+#addBut:hover {
+    -fx-background-color: #45a049;
+}
+#addBut:pressed {
+    -fx-background-color: #388e3c;
+}
+#deleteBut:hover{
+    -fx-background-color: Crimson;
+}
+#deleteBut:pressed{
+    -fx-background-color: DarkRed;
+}

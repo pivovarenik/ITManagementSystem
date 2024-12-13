@@ -21,6 +21,7 @@
         <mapping class="entities.DepartmentRole"/>
         <mapping class="entities.Project"/>
         <mapping class="entities.Task"/>
+        <mapping class="entities.Message"/>
         <mapping class="entities.ProjectUser"/>
         <mapping class="entities.TaskUser"/>
         <mapping class="entities.Chat"/>

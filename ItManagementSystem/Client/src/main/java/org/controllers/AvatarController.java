@@ -15,16 +15,24 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
+import org.models.Chat;
 import org.models.Role;
 import org.models.User;
+import org.requests.ChatRequest;
 import org.requests.UserRequest;
 import org.requests.RoleRequest;
+import org.util.RootFinder;
+import org.util.UserSession;
+
+import java.io.IOException;
+import java.time.Instant;
 
 public class AvatarController {
     @FXML
@@ -48,7 +56,7 @@ public class AvatarController {
         profilePic.setFill(new ImagePattern(croppedImage));
         profilePic.setOnMouseReleased(event -> {
             Node currentNode = profilePic;
-            Parent root = findRoot(currentNode);
+            Parent root = RootFinder.findRoot(currentNode);
             if (root instanceof Pane) {
                 Pane rootPane = (Pane) root;
                 try {
@@ -62,52 +70,33 @@ public class AvatarController {
 
     private void showUserCard(Pane rootPane) throws Exception {
         User user = UserRequest.findUserByName(fullNameLabel.getText());
+        System.out.println(user);
         if (user == null) {
-              /*user = new User();
-                    Role role = new Role();
-                    controller.setUserData(user,role);
-                    StackPane modalLayer = new StackPane();
-                    modalLayer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
-                    modalLayer.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
-                    modalLayer.setAlignment(Pos.CENTER);
-                    modalLayer.getChildren().add(newPane);
-
-                    modalLayer.setOnMouseClicked(event -> {
-                        if (event.getTarget() == modalLayer) {
-                            rootPane.getChildren().remove(modalLayer);
-                        }
-                    });
-
-                    rootPane.getChildren().add(modalLayer);*/
-            /*controller.createNewUser();*/
+           addNewUser();
         }
         else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UserInfoModal.fxml"));
             Pane newPane = (Pane) loader.load();
             UserInfoModalController controller = loader.getController();
-
             try {
-                if (user != null) {
-                    int id = user.getRole_id();
-                    Role role = RoleRequest.findRoleById(id);
-                    controller.setUserData(user, role);
-                    StackPane modalLayer = new StackPane();
-                    modalLayer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
-                    modalLayer.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
-                    modalLayer.setAlignment(Pos.CENTER);
-                    modalLayer.getChildren().add(newPane);
-                    modalLayer.setOnMouseClicked(event -> {
-                        if (event.getTarget() == modalLayer) {
-                            rootPane.getChildren().remove(modalLayer);
-                            controller.handleSave();
-                            fullNameLabel.setText(controller.getUser().getFullName());
-                            Image img = new Image(controller.getUser().getProfile_picture());
-                            Image newimage = cropToSquare(img);
-                            profilePic.setFill(new ImagePattern(newimage));
-                        }
-                    });
-                    rootPane.getChildren().add(modalLayer);
-                }
+                controller.setUserData(user);
+                StackPane modalLayer = new StackPane();
+                modalLayer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
+                modalLayer.setPrefSize(rootPane.getWidth(), rootPane.getHeight());
+                modalLayer.setAlignment(Pos.CENTER);
+                modalLayer.getChildren().add(newPane);
+                modalLayer.setOnMouseClicked(event -> {
+                    if (event.getTarget() == modalLayer) {
+                        rootPane.getChildren().remove(modalLayer);
+                        controller.handleSave();
+                        fullNameLabel.setText(controller.getUser().getFullName());
+                        Image img = new Image(controller.getUser().getprofilePictureUrl());
+                        Image newimage = cropToSquare(img);
+                        profilePic.setFill(new ImagePattern(newimage));
+                    }
+                });
+                rootPane.getChildren().add(modalLayer);
+
             } catch (NullPointerException e) {
                 System.out.println("Ошибка в аватар контроллере");
                 e.printStackTrace();
@@ -116,13 +105,26 @@ public class AvatarController {
         }
     }
 
+    public void addNewUser() {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NewUserInfoEditModal.fxml"));
+            Pane pane = (Pane) loader.load();
+            Node curroot = RootFinder.findRoot(fullNameLabel);
+            Pane root = (Pane) curroot;
+            StackPane modalLayer = new StackPane();
+            modalLayer.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
+            modalLayer.setPrefSize(root.getWidth(), root.getHeight());
+            modalLayer.setAlignment(Pos.CENTER);
 
-    private Parent findRoot(Node currentNode) {
-        Parent parent = currentNode.getParent();
-        while (parent != null && parent.getParent() != null) {
-            parent = parent.getParent();
+            modalLayer.getChildren().add(pane);
+
+            root.getChildren().add(modalLayer);
         }
-        return parent;
+        catch (IOException e){
+            System.out.println("addNewUser Error");
+            e.printStackTrace();
+        }
     }
     private Image cropToSquare(Image image) {
         double minSize = Math.min(image.getWidth(), image.getHeight());
@@ -140,5 +142,16 @@ public class AvatarController {
 
         return croppedImage;
     }
-
+    public void disable(){
+        profilePic.setOnMouseReleased(event -> {
+            Node node = RootFinder.findRoot(profilePic);
+            Pane pane = (Pane) node;
+            pane.getChildren().removeLast();
+            Chat chat = new Chat();
+            chat.setCreatedAt(Instant.now());
+            chat.setUserOne(UserSession.getCurrentUser());
+            chat.setUserTwo(UserRequest.findUserByName(fullNameLabel.getText()));
+            System.out.println(ChatRequest.createNewChat(chat));
+        });
+    }
 }

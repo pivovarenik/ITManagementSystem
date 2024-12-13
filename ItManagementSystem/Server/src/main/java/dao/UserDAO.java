@@ -2,7 +2,11 @@ package dao;
 
 import entities.User;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
+
+import java.util.Collection;
+import java.util.List;
 
 public class UserDAO extends GenericDAOImpl<User, Long> {
     public UserDAO() {
@@ -29,5 +33,13 @@ public class UserDAO extends GenericDAOImpl<User, Long> {
             return true;
         }
         else return false;
+    }
+    public List<User> getUsersExcluding(Collection<Integer> userIds){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM User WHERE id NOT IN :ids";
+            Query<User> query = session.createQuery(hql, User.class);
+            query.setParameter("ids", userIds);
+            return query.list();
+        }
     }
 }
